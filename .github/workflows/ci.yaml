@@ -4,8 +4,6 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  release:
-    types: [ published ]
 
 jobs:
   test:
@@ -14,37 +12,18 @@ jobs:
       matrix:
         python-version: [3.11]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install pytest pytest-asyncio pytest-mock
+          pip install pytest pytest-asyncio pytest-mock pytest-qt
       - name: Run unit tests
         run: pytest -m "not integration and not gui" --cov=. --cov-report=xml
       - name: Upload coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
-          file: ./coverage.xml
-
-  build:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.event_name == 'release'
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build Docker image
-        run: docker build -t futures-terminal:${GITHUB_REF##*/} .
-      - name: Log in to GitHub Container Registry
-        uses: docker/login-action@v2
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Push Docker image
-        run: |
-          docker tag futures-terminal:${GITHUB_REF##*/} ghcr.io/${{ github.repository }}/futures-terminal:${GITHUB_REF##*/}
-          docker push ghcr.io/${{ github.repository }}/futures-terminal:${GITHUB_REF##*/}
+          files: ./coverage.xml
