@@ -1,0 +1,113 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv
+venv/
+ENV/
+env/
+.env
+
+# Flask / Python
+instance/
+.webassets-cache
+*.log
+*.pot
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+frontend/build/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary / Cache
+tmp/
+temp/
+.cache/
+*.tmp
+
+# Database / Sessions
+*.db
+*.sqlite
+session/
+
+# MQL5 / Trading artifacts
+*.ex5
+*.ex4
+*.log
+
+# Screenshots / Debug
+sniper_issue.png
+*.png
+*.jpg
+*.jpeg
+
+# Large data files
+*.zip
+*.tar.gz
+
+# Testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Local development
+*.local
+*.bak
+*.orig
+
+# Ignore frontend build in Git (but keep in deployment)
+!frontend/dist/.gitkeep

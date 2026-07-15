@@ -1,0 +1,123 @@
+database:
+  path: "trading_terminal.db"
+
+logging:
+  level: "DEBUG"
+  file: "logs/terminal.log"
+  max_bytes: 10485760
+  backup_count: 5
+  format: "%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+  datefmt: "%Y-%m-%d %H:%M:%S"
+
+exchange: {}
+defaults:
+  leverage: 1
+  max_position_usd: 10000
+  max_risk_per_trade_pct: 1.0
+  daily_loss_limit_usd: 500.0
+  max_concurrent_positions: 10
+gui:
+  dark_mode: true
+  refresh_interval_ms: 500
+
+risk:
+  max_daily_loss_usd: 500.0
+  max_drawdown_pct: 20.0
+  daily_stop_enabled: true
+  circuit_breaker:
+    enabled: true
+    max_consecutive_failures: 5
+  exposure:
+    total_exposure_pct: 300.0
+    per_symbol_exposure_pct: 100.0
+  sector_limits:
+    enabled: true
+    sectors:
+      BTCUSDT: "Majors"
+      ETHUSDT: "Majors"
+      SOLUSDT: "L1"
+      BNBUSDT: "Exchange"
+  correlation_limit:
+    enabled: true
+    max_correlation: 0.8
+    lookback_days: 7
+  max_leverage: 20
+  kelly:
+    enabled: true
+    max_fraction: 0.5
+    min_trades_for_calc: 20
+    default_win_rate: 0.55
+    default_avg_win_loss_ratio: 1.5
+  volatility:
+    enabled: true
+    atr_period: 14
+    atr_multiplier: 2.0
+    volatility_scaling: true
+  news_protection:
+    enabled: true
+
+notifications:
+  telegram:
+    enabled: false
+    bot_token: ""
+    chat_id: ""
+  discord:
+    enabled: false
+    webhook_url: ""
+  email:
+    enabled: false
+    smtp_host: "smtp.gmail.com"
+    smtp_port: 587
+    username: ""
+    password: ""
+    recipient: ""
+  desktop:
+    enabled: true
+  trade_alert:
+    enabled: true
+    min_pnl_usd: 10
+  risk_alert:
+    enabled: true
+    daily_loss_pct: 5
+  daily_report:
+    enabled: true
+    time: "23:59"
+
+strategies:
+  active: []
+  params: {}
+  interval_seconds: 60
+  allocation:
+    method: equal
+    max_allocation_pct: 20
+
+ai:
+  models:
+    - name: xgb_classifier
+      type: xgboost
+      params:
+        max_depth: 5
+        eta: 0.1
+    - name: lgbm_classifier
+      type: lightgbm
+      params:
+        num_leaves: 31
+    - name: lstm_classifier
+      type: lstm
+      input_size: 25
+      load_version: null
+  online_learning:
+    interval_hours: 1
+    symbols: ["BTCUSDT", "ETHUSDT"]
+
+backtesting:
+  initial_equity: 10000
+  fee_rate: 0.0004
+  slippage_pct: 0.0005
+  cache_dir: "data/historical"
+  default_timeframe: "5m"
+
+plugins:
+  directories:
+    - plugins
+  auto_load: true

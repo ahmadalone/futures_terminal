@@ -1,0 +1,14 @@
+{
+    "name": "ma_crossover",
+    "version": "1.0.0",
+    "author": "FuturesTerminal",
+    "description": "Simple moving average crossover strategy.",
+    "entry_point": "MACrossoverPlugin",
+    "symbols": ["BTCUSDT", "ETHUSDT"],
+    "parameters": {
+        "fast_ma": 10,
+        "slow_ma": 30
+    },
+    "min_interval_seconds": 60,
+    "requires": ["exchange"]
+}

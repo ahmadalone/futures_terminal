@@ -1,0 +1,93 @@
+/* Dark theme for Futures Terminal */
+QMainWindow {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+}
+QMenuBar {
+    background-color: #2d2d2d;
+    color: #cccccc;
+}
+QMenuBar::item:selected {
+    background-color: #3e3e3e;
+}
+QMenu {
+    background-color: #2d2d2d;
+    color: #cccccc;
+    border: 1px solid #555;
+}
+QMenu::item:selected {
+    background-color: #3e3e3e;
+}
+QDockWidget::title {
+    background-color: #2d2d2d;
+    padding: 4px;
+    border: 1px solid #3c3c3c;
+}
+QTableWidget {
+    background-color: #252526;
+    gridline-color: #3c3c3c;
+    color: #d4d4d4;
+    selection-background-color: #264f78;
+}
+QHeaderView::section {
+    background-color: #2d2d2d;
+    color: #d4d4d4;
+    padding: 4px;
+    border: 1px solid #3c3c3c;
+}
+QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox {
+    background-color: #3c3c3c;
+    color: white;
+    border: 1px solid #555;
+    padding: 2px;
+}
+QPushButton {
+    background-color: #0e639c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+}
+QPushButton:hover {
+    background-color: #1177bb;
+}
+QPushButton:pressed {
+    background-color: #0a4d7a;
+}
+QPushButton:disabled {
+    background-color: #555;
+    color: #888;
+}
+QLabel {
+    color: #d4d4d4;
+}
+QGroupBox {
+    color: #d4d4d4;
+    border: 1px solid #555;
+    margin-top: 0.5em;
+    padding-top: 0.5em;
+}
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 3px;
+}
+QTextEdit {
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+    border: 1px solid #3c3c3c;
+}
+QSplitter::handle {
+    background-color: #3c3c3c;
+}
+QScrollBar:vertical {
+    background: #2d2d2d;
+    width: 12px;
+}
+QScrollBar::handle:vertical {
+    background: #555;
+    min-height: 20px;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
